@@ -59,12 +59,14 @@ header {
 }
 
 .tema button {
-    height: 28px;
+    height: 20px;
     width: 32px;
     background: var(--purple);
     border: 0;
     border-radius: 999px;
     padding: 4px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .tema button div {
@@ -122,8 +124,8 @@ main {
 }
 
 .assuntos button div{
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     padding: 5px;
     border-radius: 5px;
 }
@@ -167,7 +169,7 @@ main {
         
         .tema button {
             width: 48px;
-            height: 12px;
+            height: 28px;
         }
          .tema button div{
             width: 20px;
