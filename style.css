@@ -89,8 +89,6 @@ main {
 }
 
 .assuntos {
-    border: 1px solid red;
-
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -105,20 +103,31 @@ main {
     padding: 12px;
     border-radius: 12px ;
     box-shadow: var(--shadow);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--primiry-text-color);
 }
+
+.assuntos button div{
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
 
 .botao_html div {
     background: var(--bg-html);
 }
 
-.botao_css {
+.botao_css div {
     background: var(--bg-css);
 }
 
-.botao_js {
+.botao_js div {
     background: var(--bg-javascript);
 }
 
-.botao_acessibilidade {
+.botao_acessibilidade div {
     background: var(--bg-acessibilidade);
 }
