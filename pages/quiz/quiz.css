@@ -160,6 +160,25 @@ main {
     }
 }
 
+.alternativa label#correta{
+    outline: 3px solid var(--gren);
+
+    & span {
+        background: var(--gren);
+        color: white;
+    }
+}
+
+.alternativa label#errada{
+    outline: 3px solid var(--red);
+
+    & span {
+        background: var(--red);
+        color: white;
+    }
+}
+
+
 .alternativa input{
     display: none;
 
