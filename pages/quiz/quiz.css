@@ -18,6 +18,8 @@
     --bg-javascript: #ebf0ff;
     --bg-acessibilidade: #f6e7ff;
     --button-pg: #fff;
+    --gren: #26d782;
+    --red: #ee5454;
     --bg-mobile: url(../../assets/images/pattern-background-mobile-light.svg);
     --bg-desktop: url(../../assets/images/pattern-background-desktop-light.svg);
 }
@@ -112,8 +114,8 @@ main {
 }
 .pergunta h2 {
     font-size: 20px;
-    font-weight: 500
-    color var(--primiry-text-color);
+    font-weight: 500;
+    color: var(--primiry-text-color);
     line-height: 24px;
     margin-bottom: 24px;
 }
@@ -150,7 +152,12 @@ main {
     color: var(--primiry-text-color);
 }
 .alternativa label:has(input:checked){
-    
+    outline: 3px solid var(--purple);
+
+    & span {
+        background: var(--purple);
+        color: var(--white);
+    }
 }
 
 .alternativa input{
@@ -182,7 +189,7 @@ main {
     padding: 16px;
     border-radius: 12px;
     border: none;
-    background: var(purple);
+    background: var(--purple);
     color: white;
     width: 100%;
 
