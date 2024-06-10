@@ -99,7 +99,7 @@ function montarPergunta() {
                         </label>
                     </form>
 
-                    <button>Enviar</button>
+                    <button>Responder</button>
                 </section>
             </section>
     `
@@ -118,28 +118,57 @@ function guardarResposta(evento) {
 }
 
 function validarResposta(){
+
+    const botaoEnviar = document.querySelector(".alternativa button")
+    botaoEnviar.innerText = "Próxima"
+    botaoEnviar.removeEventListener("click", validarResposta)
+
+    if (pergunta === 10) {
+        botaoEnviar.innerText = "Finalizar"
+        botaoEnviar.addEventListener("click", finalizar)
+    }else {
+        botaoEnviar.addEventListener("click", proximaPergunta)
+
+    }
+
     if (resposta === quiz.questions[pergunta-1].answer) {
         document.querySelector(`label[for='${idInputResposta}']`).setAttribute("id", "correta")
         pontos = pontos + 1
     } else {
         document.querySelector(`label[for='${idInputResposta}']`).setAttribute("id", "errada")
         document.querySelector(`label[for='${respostaCorreta}']`).setAttribute("id", "correta")
+
+        pergunta = pergunta + 1
     }
+}
+function finalizar (){
+    localStorage.setItem("pontos", pontos)
+
+    window.location.href = "../resultado/resultado.HTML"
+}
+
+function proximaPergunta() {
+    montarPergunta()
+    adicionarEventosInputs()
+}
+
+function adicionarEventosInputs(){
+    const inputsResposta = document.querySelectorAll(".alternativa input")
+    inputsResposta.forEach(input => {
+        input.addEventListener("click", guardarResposta)
+
+        if (input.value === quiz.questions[pergunta-1].answer) {
+            respostaCorreta = input.id
+        }
+})
 }
 
  async function iniciar(){
     alterarAssunto()
     await buscarPerguntas()
     montarPergunta()
+    adicionarEventosInputs()
 
-    const inputsResposta = document.querySelectorAll(".alternativa input")
-        inputsResposta.forEach(input => {
-            input.addEventListener("click", guardarResposta)
-
-            if (input.value === quiz.questions[pergunta-1].answer) {
-                respostaCorreta = input.id
-            }
-    })
  }
 
 iniciar ()
