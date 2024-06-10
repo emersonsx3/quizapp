@@ -31,11 +31,11 @@ function inserirResultado(){
     const pontos = localStorage.getItem("pontos")
 
     sectionPontuacao.innerHTML = `
-                ${divAssunto.outerHTML}
+        ${divAssunto.outerHTML}
                 
-                <strong>${pontos}</strong>
+        <strong>${pontos}</strong>
 
-                <p>de 10</p>
+        <p>de 10</p>
     `
 }
 

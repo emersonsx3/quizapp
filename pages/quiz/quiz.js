@@ -31,11 +31,10 @@ function alterarAssunto() {
 }
 
 
-async function buscarPerguntas (){
+async function buscarPerguntas() {
     const urlDados = "../../data.json"
-
-    await fetch(urlDados).then(resposta => resposta.json()).then(dados =>{
-        dados.quizzes.forEach(dado =>{
+    await fetch(urlDados).then(resposta => resposta.json()).then(dados => {
+        dados.quizzes.forEach(dado => {
             if (dado.title === assunto) {
                 quiz = dado
             }
@@ -50,59 +49,57 @@ function montarPergunta() {
 
     main.innerHTML = `
         <section class="pergunta">
-
-                <div>
-                <p>Questãode ${pergunta} de 10</p>
+            <div>
+                <p>Questão ${pergunta} de 10</p>
 
                 <h2>${alterarSinais(quiz.questions[pergunta-1].question)}</h2>
-                </div>
-                <div class="barra_progresso">
-                    <div style="width: ${pergunta * 10}%"></div>
-                </div>
-            </section>
-                <section class="alternativa">
-                    <form action="">
-                        <label for="alternativa_a">
-                            <input type="radio" id="alternativa_a" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[0])}">
+            </div>
+            <div class="barra_progresso">
+                <div style="width: ${pergunta*10}%"></div>
+            </div>
+        </section>
 
-                            <div>
-                                <span>A</span>
-                                ${alterarSinais(quiz.questions[pergunta-1].options[0])}
-                            </div>
-                        </label>
+        <section class="alternativa">
+            <form action="">
+                <label for="alternativa_a">
+                    <input type="radio" id="alternativa_a" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[0])}">
 
-                        <label for="alternativa_b">
-                            <input type="radio" id="alternativa_b" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[1])}">
+                    <div>
+                        <span>A</span>
+                        ${alterarSinais(quiz.questions[pergunta-1].options[0])}
+                    </div>
+                </label>
 
-                            <div>
-                                <span>B</span>
-                                ${alterarSinais(quiz.questions[pergunta-1].options[1])}
-                            </div>
-                        </label>
+                <label for="alternativa_b">
+                    <input type="radio" id="alternativa_b" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[1])}">
 
-                        <label for="alternativa_c">
-                            <input type="radio" id="alternativa_c" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[2])}">
+                    <div>
+                        <span>B</span>
+                        ${alterarSinais(quiz.questions[pergunta-1].options[1])}
+                    </div>
+                </label>
 
-                            <div>
-                                <span>C</span>
-                                ${alterarSinais(quiz.questions[pergunta-1].options[2])}
-                            </div>
-                        </label>
+                <label for="alternativa_c">
+                    <input type="radio" id="alternativa_c" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[2])}">
 
-                        <label for="alternativa_d">
-                            <input type="radio" id="alternativa_d" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[3])}">
+                    <div>
+                        <span>C</span>
+                        ${alterarSinais(quiz.questions[pergunta-1].options[2])}
+                    </div>
+                </label>
 
-                            <div>
-                                <span>D</span>
-                                ${alterarSinais(quiz.questions[pergunta-1].options[3])}
-                            </div>
-                        </label>
-                    </form>
+                <label for="alternativa_d">
+                    <input type="radio" id="alternativa_d" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[3])}">
 
-                    <button>Responder</button>
-                </section>
-            </section>
-    `
+                    <div>
+                        <span>D</span>
+                        ${alterarSinais(quiz.questions[pergunta-1].options[3])}
+                    </div>
+                </label>
+            </form>
+            
+            <button>Responder</button>
+        </section>`
 }
 
 function alterarSinais(texto) {
@@ -126,7 +123,7 @@ function validarResposta(){
     if (pergunta === 10) {
         botaoEnviar.innerText = "Finalizar"
         botaoEnviar.addEventListener("click", finalizar)
-    }else {
+    } else {
         botaoEnviar.addEventListener("click", proximaPergunta)
 
     }
@@ -137,9 +134,9 @@ function validarResposta(){
     } else {
         document.querySelector(`label[for='${idInputResposta}']`).setAttribute("id", "errada")
         document.querySelector(`label[for='${respostaCorreta}']`).setAttribute("id", "correta")
-
-        pergunta = pergunta + 1
     }
+
+    pergunta = pergunta + 1
 }
 function finalizar (){
     localStorage.setItem("pontos", pontos)
